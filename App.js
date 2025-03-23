@@ -11,10 +11,19 @@ export default function App() {
     //   ...prev,
     //   { key: "GL0" + (prev.length + 1).toString(), text: goalInputText },
     // ]); //FlatList key method 1
-    setGoalList((prev) => [
-      ...prev,
-      { id: "GL0" + (prev.length + 1).toString(), text: enteredText },
+    setGoalList((currentGoalList) => [
+      ...currentGoalList,
+      {
+        id: "GL0" + (currentGoalList.length + 1).toString(),
+        text: enteredText,
+      },
     ]); //Flat list key method 2 eg id Instead of key
+  };
+
+  const deleteGoalHandler = (id) => {
+    setGoalList((currentGoalList) =>
+      currentGoalList.filter((goal) => goal.id !== id)
+    );
   };
   return (
     <View style={styles.appContainer}>
@@ -28,7 +37,13 @@ export default function App() {
           keyExtractor={(item, index) => item.id}
           renderItem={(itemData) => {
             // item data contains the meta data as well i.e, itemData
-            return <GoalItem text={itemData.item.text} />;
+            return (
+              <GoalItem
+                text={itemData.item.text}
+                id={itemData.item.id}
+                onDeleteGoalHandler={deleteGoalHandler}
+              />
+            );
           }}
         />
       </View>

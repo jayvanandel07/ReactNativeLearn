@@ -1,10 +1,13 @@
-import { Text, View, StyleSheet } from "react-native";
+import { Text, View, StyleSheet, Pressable } from "react-native";
 
-const GoalItem = ({ text }) => {
+const GoalItem = ({ text, id, onDeleteGoalHandler }) => {
   return (
-    <View style={styles.goalItem}>
-      <Text style={styles.goalText}>{text}</Text>
-    </View>
+    //bind(this,id) setting the initial arguments
+    <Pressable onPress={onDeleteGoalHandler.bind(this, id)}>
+      <View style={styles.goalItem}>
+        <Text style={styles.goalText}>{text}</Text>
+      </View>
+    </Pressable>
   ); //itemData.item contains the item itself
 };
 
