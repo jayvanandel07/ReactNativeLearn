@@ -1,11 +1,15 @@
 import { useState } from "react";
-import { FlatList, StyleSheet, View } from "react-native";
+import { Button, FlatList, StyleSheet, View } from "react-native";
 import GoalItem from "./components/goalItem";
 import GoalInput from "./components/goalInput";
 
 export default function App() {
+  const [addGoalModalVisible, setAddGoalModalVisible] = useState(false);
   const [goalList, setGoalList] = useState([]);
 
+  const addGoalModalVisibleHandler = (visible) => {
+    setAddGoalModalVisible(visible);
+  };
   const addGoalHandler = (enteredText) => {
     // setGoalList((prev) => [
     //   ...prev,
@@ -18,6 +22,7 @@ export default function App() {
         text: enteredText,
       },
     ]); //Flat list key method 2 eg id Instead of key
+    addGoalModalVisibleHandler(false);
   };
 
   const deleteGoalHandler = (id) => {
@@ -27,7 +32,15 @@ export default function App() {
   };
   return (
     <View style={styles.appContainer}>
-      <GoalInput onAddGoal={addGoalHandler} />
+      <Button
+        title="Add Goals!"
+        onPress={addGoalModalVisibleHandler.bind(this, true)}
+      />
+      <GoalInput
+        visible={addGoalModalVisible}
+        onCancelHandler={addGoalModalVisibleHandler.bind(this, false)}
+        onAddGoal={addGoalHandler}
+      />
       <View style={styles.goalsContainer}>
         <FlatList
           //Flat list requires a key for child

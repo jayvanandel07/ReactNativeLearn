@@ -1,46 +1,59 @@
 import { useState } from "react";
-import { Button, TextInput, View, StyleSheet } from "react-native";
+import { Button, TextInput, View, StyleSheet, Modal } from "react-native";
 
 const GoalInput = (props) => {
   const [goalInputText, setGoalInputText] = useState("");
   const goalInputHandler = (inputText) => {
     setGoalInputText(inputText);
   };
+  const addGoalHandler = () => {
+    props.onAddGoal(goalInputText);
+    setGoalInputText("");
+  };
   return (
-    <View style={styles.inputContainer}>
-      <TextInput
-        style={styles.textInput}
-        placeholder="Your Course Goal!"
-        value={goalInputText}
-        onChangeText={goalInputHandler}
-      />
-      <Button
-        title="Add Goal"
-        onPress={() => {
-          props.onAddGoal(goalInputText);
-          setGoalInputText("");
-        }}
-      />
-    </View>
+    <Modal visible={props.visible} animationType="slide">
+      <View style={styles.inputContainer}>
+        <TextInput
+          style={styles.textInput}
+          placeholder="Your Course Goal!"
+          value={goalInputText}
+          onChangeText={goalInputHandler}
+        />
+        <View style={styles.buttonContainer}>
+          <View style={styles.button}>
+            <Button title="Add Goal" onPress={addGoalHandler} />
+          </View>
+          <View style={styles.button}>
+            <Button title="Cancel" onPress={props.onCancelHandler} />
+          </View>
+        </View>
+      </View>
+    </Modal>
   );
 };
 
 const styles = StyleSheet.create({
   inputContainer: {
     flex: 1,
-    flexDirection: "row",
+    justifyContent: "center",
     alignItems: "center",
-    justifyContent: "space-between",
-    marginBlockEnd: 20,
     borderBlockEndColor: "#cccc",
     borderBottomWidth: 1,
+    padding: 20,
   },
   textInput: {
+    width: "100%",
     borderWidth: 1,
     borderColor: "#cccccc",
-    flex: 1,
-    marginRight: 10,
     padding: 8,
+  },
+  buttonContainer: {
+    marginTop: 20,
+    flexDirection: "row",
+    gap: 10,
+  },
+  button: {
+    flex: 1,
   },
 });
 
