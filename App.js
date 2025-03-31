@@ -1,5 +1,5 @@
 import { ImageBackground, StyleSheet } from "react-native";
-import StartScreen from "./components/StartScreen";
+import StartScreen from "./screens/StartScreen";
 import { LinearGradient } from "expo-linear-gradient";
 
 export default function App() {

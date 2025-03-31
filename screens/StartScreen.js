@@ -1,5 +1,5 @@
 import { StyleSheet, TextInput, View } from "react-native";
-import PrimaryButton from "./Buttons/PrimaryButton";
+import PrimaryButton from "../components/Buttons/PrimaryButton";
 
 const StartScreen = () => {
   return (
