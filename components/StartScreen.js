@@ -27,6 +27,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#72063c",
     borderRadius: 10,
     boxShadow: [
+      // only works on new version of ios and android
       {
         offsetX: 0,
         offsetY: 0,
