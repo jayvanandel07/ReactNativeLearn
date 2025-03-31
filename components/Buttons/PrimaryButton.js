@@ -31,6 +31,7 @@ const PrimaryButton = (props) => {
 
 const styles = StyleSheet.create({
   buttonOuterContainer: {
+    flex: 1,
     margin: 4,
     borderRadius: 26,
     backgroundColor: "#7e0642",

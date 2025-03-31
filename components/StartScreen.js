@@ -13,14 +13,17 @@ const StartScreen = () => {
         cursorColor={"#ddb52f"}
         selectionHandleColor={"#ddb52f"}
       />
-      <PrimaryButton>Reset</PrimaryButton>
-      <PrimaryButton>Confirm</PrimaryButton>
+      <View style={styles.buttonContainer}>
+        <PrimaryButton>Reset</PrimaryButton>
+        <PrimaryButton>Confirm</PrimaryButton>
+      </View>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   inputContainer: {
+    alignItems: "center",
     marginTop: 100,
     margin: 20,
     padding: 16,
@@ -43,10 +46,13 @@ const styles = StyleSheet.create({
     fontSize: 32,
     borderBottomColor: "#ddb52f",
     borderBottomWidth: 2,
-    marginVertical: 8,
+    marginVertical: 10,
     color: "#ddb52f",
     fontWeight: "bold",
     textAlign: "center",
+  },
+  buttonContainer: {
+    flexDirection: "row",
   },
 });
 
