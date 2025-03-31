@@ -1,5 +1,4 @@
-import { StyleSheet } from "react-native";
-
+import { ImageBackground, StyleSheet } from "react-native";
 import StartScreen from "./components/StartScreen";
 import { LinearGradient } from "expo-linear-gradient";
 
@@ -10,7 +9,15 @@ export default function App() {
       colors={["#d2bd78", "#d4b755", "#e0b118"]}
     >
       {/* Expo linear gradient : npx expo install expo-linear-gradient */}
-      <StartScreen />
+      <ImageBackground
+        source={require("./assets/images/background.png")}
+        resizeMode="cover"
+        style={[styles.rootContainer]} //style of containing element
+        imageStyle={styles.backgroundImage} //style for image itself
+      >
+        <StartScreen />
+      </ImageBackground>
+      {/* ImageBackground in used to set a background image unlike image which is used to set a image in the layout */}
     </LinearGradient>
   );
 }
@@ -18,5 +25,8 @@ export default function App() {
 const styles = StyleSheet.create({
   rootContainer: {
     flex: 1,
+  },
+  backgroundImage: {
+    opacity: 0.35,
   },
 });
