@@ -1,11 +1,12 @@
 import { View, Text, Pressable, StyleSheet } from "react-native";
 import React, { useState } from "react";
 
-const PrimaryButton = (props) => {
+const PrimaryButton = ({ children, onPress }) => {
   const [buttonPressed, setButtonPressed] = useState(false);
 
   const buttonPressHandler = (event) => {
     event.preventDefault();
+    onPress();
   };
 
   return (
@@ -23,7 +24,7 @@ const PrimaryButton = (props) => {
         onPressIn={setButtonPressed.bind(this, true)}
         onPressOut={setButtonPressed.bind(this, false)}
       >
-        <Text style={styles.buttonText}>{props.children}</Text>
+        <Text style={styles.buttonText}>{children}</Text>
       </Pressable>
     </View>
   );

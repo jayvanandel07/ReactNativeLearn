@@ -1,21 +1,45 @@
-import { StyleSheet, TextInput, View } from "react-native";
+import { Alert, StyleSheet, TextInput, View } from "react-native";
 import PrimaryButton from "../components/Buttons/PrimaryButton";
 
+import { useState } from "react";
+
 const StartScreen = () => {
+  const [enteredNumber, setEnteredNumber] = useState("");
+
+  function enteredNumberHandler(enteredNumber) {
+    setEnteredNumber(enteredNumber);
+  }
+
+  function resetHandler() {
+    setEnteredNumber("");
+  }
+  function confirmHandler() {
+    const parsedNumber = parseInt(enteredNumber);
+    if (isNaN(parsedNumber) || parsedNumber <= 0 || parsedNumber > 99) {
+      // Alert calls the native alert
+      Alert.alert("Invalid Number!", "Number should be between 0 and 100.", [
+        { text: "Okay", style: "destructive", onPress: resetHandler },
+      ]);
+      return;
+    }
+  }
+
   return (
     <View style={styles.inputContainer}>
       <TextInput
         style={styles.numberInput}
         placeholder="00"
         maxLength={2}
-        keyboardType="numeric"
+        keyboardType="number-pad"
         placeholderTextColor={"#ddb42f7e"}
         cursorColor={"#ddb52f"}
         selectionHandleColor={"#ddb52f"}
+        onChangeText={enteredNumberHandler}
+        value={enteredNumber}
       />
       <View style={styles.buttonContainer}>
-        <PrimaryButton>Reset</PrimaryButton>
-        <PrimaryButton>Confirm</PrimaryButton>
+        <PrimaryButton onPress={resetHandler}>Reset</PrimaryButton>
+        <PrimaryButton onPress={confirmHandler}>Confirm</PrimaryButton>
       </View>
     </View>
   );
