@@ -3,6 +3,8 @@ import PrimaryButton from "../components/Buttons/PrimaryButton";
 
 import { useState } from "react";
 import Title from "../components/Title";
+import Colors from "../constants/colors";
+import colors from "../constants/colors";
 
 const StartScreen = ({ onPickNumber }) => {
   const [enteredNumber, setEnteredNumber] = useState("");
@@ -35,9 +37,9 @@ const StartScreen = ({ onPickNumber }) => {
           placeholder="00"
           maxLength={2}
           keyboardType="number-pad"
-          placeholderTextColor={"#ddb42f7e"}
-          cursorColor={"#ddb52f"}
-          selectionHandleColor={"#ddb52f"}
+          placeholderTextColor={colors.secondary300}
+          cursorColor={colors.secondary500}
+          selectionHandleColor={colors.secondary500}
           onChangeText={enteredNumberHandler}
           value={enteredNumber}
         />
@@ -54,9 +56,9 @@ const styles = StyleSheet.create({
   inputContainer: {
     alignItems: "center",
     marginTop: 50,
-    margin: 20,
+
     padding: 16,
-    backgroundColor: "#72063c",
+    backgroundColor: Colors.primary500,
     borderRadius: 10,
     boxShadow: [
       // only works on new version of ios and android
@@ -65,7 +67,7 @@ const styles = StyleSheet.create({
         offsetY: 0,
         blurRadius: "20px",
         spreadDistance: "3px",
-        color: "#00000053",
+        color: colors.shadow500,
         inset: false,
       },
     ],
@@ -73,10 +75,10 @@ const styles = StyleSheet.create({
   numberInput: {
     width: 50,
     fontSize: 32,
-    borderBottomColor: "#ddb52f",
+    borderBottomColor: colors.secondary500,
     borderBottomWidth: 2,
     marginVertical: 10,
-    color: "#ddb52f",
+    color: colors.secondary500,
     fontWeight: "bold",
     textAlign: "center",
   },

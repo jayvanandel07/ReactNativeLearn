@@ -9,6 +9,7 @@ import StartScreen from "./screens/StartScreen";
 import { LinearGradient } from "expo-linear-gradient";
 import { useState } from "react";
 import GameScreen from "./screens/GameScreen";
+import colors from "./constants/colors";
 
 export default function App() {
   const [userNumber, setUserNumber] = useState();
@@ -23,7 +24,7 @@ export default function App() {
   return (
     <LinearGradient
       style={styles.rootContainer}
-      colors={["#d2bd78", "#d4b755", "#e0b118"]}
+      colors={colors.backgroundGradient}
     >
       {/* Expo linear gradient : npx expo install expo-linear-gradient */}
       <ImageBackground
@@ -35,6 +36,7 @@ export default function App() {
         <SafeAreaView
           style={{
             ...styles.rootContainer,
+            padding: 24,
             paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0, // to avoid status bar
           }}
         >
