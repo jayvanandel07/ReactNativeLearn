@@ -2,8 +2,9 @@ import { Alert, StyleSheet, TextInput, View } from "react-native";
 import PrimaryButton from "../components/Buttons/PrimaryButton";
 
 import { useState } from "react";
+import Title from "../components/Title";
 
-const StartScreen = () => {
+const StartScreen = ({ onPickNumber }) => {
   const [enteredNumber, setEnteredNumber] = useState("");
 
   function enteredNumberHandler(enteredNumber) {
@@ -22,33 +23,37 @@ const StartScreen = () => {
       ]);
       return;
     }
+    onPickNumber(parsedNumber);
   }
 
   return (
-    <View style={styles.inputContainer}>
-      <TextInput
-        style={styles.numberInput}
-        placeholder="00"
-        maxLength={2}
-        keyboardType="number-pad"
-        placeholderTextColor={"#ddb42f7e"}
-        cursorColor={"#ddb52f"}
-        selectionHandleColor={"#ddb52f"}
-        onChangeText={enteredNumberHandler}
-        value={enteredNumber}
-      />
-      <View style={styles.buttonContainer}>
-        <PrimaryButton onPress={resetHandler}>Reset</PrimaryButton>
-        <PrimaryButton onPress={confirmHandler}>Confirm</PrimaryButton>
+    <>
+      <Title>Guess My Number</Title>
+      <View style={styles.inputContainer}>
+        <TextInput
+          style={styles.numberInput}
+          placeholder="00"
+          maxLength={2}
+          keyboardType="number-pad"
+          placeholderTextColor={"#ddb42f7e"}
+          cursorColor={"#ddb52f"}
+          selectionHandleColor={"#ddb52f"}
+          onChangeText={enteredNumberHandler}
+          value={enteredNumber}
+        />
+        <View style={styles.buttonContainer}>
+          <PrimaryButton onPress={resetHandler}>Reset</PrimaryButton>
+          <PrimaryButton onPress={confirmHandler}>Confirm</PrimaryButton>
+        </View>
       </View>
-    </View>
+    </>
   );
 };
 
 const styles = StyleSheet.create({
   inputContainer: {
     alignItems: "center",
-    marginTop: 100,
+    marginTop: 50,
     margin: 20,
     padding: 16,
     backgroundColor: "#72063c",
