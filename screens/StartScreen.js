@@ -1,10 +1,10 @@
 import { Alert, StyleSheet, TextInput, View } from "react-native";
-import PrimaryButton from "../components/Buttons/PrimaryButton";
 
 import { useState } from "react";
-import Title from "../components/Title";
+import Title from "../components/UI/Buttons/Title";
 import Colors from "../constants/colors";
 import colors from "../constants/colors";
+import PrimaryButton from "../components/UI/Buttons/PrimaryButton";
 
 const StartScreen = ({ onPickNumber }) => {
   const [enteredNumber, setEnteredNumber] = useState("");
@@ -43,9 +43,13 @@ const StartScreen = ({ onPickNumber }) => {
           onChangeText={enteredNumberHandler}
           value={enteredNumber}
         />
-        <View style={styles.buttonContainer}>
-          <PrimaryButton onPress={resetHandler}>Reset</PrimaryButton>
-          <PrimaryButton onPress={confirmHandler}>Confirm</PrimaryButton>
+        <View style={styles.buttonsContainer}>
+          <View style={styles.buttonContainer}>
+            <PrimaryButton onPress={resetHandler}>Reset</PrimaryButton>
+          </View>
+          <View style={styles.buttonContainer}>
+            <PrimaryButton onPress={confirmHandler}>Confirm</PrimaryButton>
+          </View>
         </View>
       </View>
     </>
@@ -82,8 +86,11 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     textAlign: "center",
   },
-  buttonContainer: {
+  buttonsContainer: {
     flexDirection: "row",
+  },
+  buttonContainer: {
+    flex: 1,
   },
 });
 

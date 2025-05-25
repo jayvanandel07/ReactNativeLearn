@@ -1,5 +1,5 @@
 import { View, Text, StyleSheet } from "react-native";
-import colors from "../constants/colors";
+import colors from "../../../constants/colors";
 
 const Title = ({ children }) => {
   return (
@@ -16,7 +16,7 @@ const styles = StyleSheet.create({
     fontSize: 24,
     fontWeight: "bold",
     textAlign: "center",
-    color: colors.secondary500,
+    color: "white",
     backgroundColor: colors.primary500, // Added contrasting background color
     paddingVertical: 8,
     borderRadius: 8,

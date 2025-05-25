@@ -1,6 +1,6 @@
 import { View, Text, Pressable, StyleSheet } from "react-native";
 import React, { useState } from "react";
-import colors from "../../constants/colors";
+import colors from "../../../constants/colors";
 
 const PrimaryButton = ({ children, onPress }) => {
   const [buttonPressed, setButtonPressed] = useState(false);
@@ -33,15 +33,14 @@ const PrimaryButton = ({ children, onPress }) => {
 
 const styles = StyleSheet.create({
   buttonOuterContainer: {
-    flex: 1,
     margin: 4,
     borderRadius: 26,
     backgroundColor: colors.primary400,
     overflow: "hidden",
   },
   buttonInnerContainer: {
-    paddingBlock: 16,
-    paddingInline: 8,
+    paddingBlock: 12,
+    paddingInline: 16,
   },
   buttonText: {
     textAlign: "center",
