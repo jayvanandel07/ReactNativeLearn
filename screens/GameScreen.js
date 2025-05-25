@@ -17,7 +17,7 @@ function getRandomNumber(min, max, exclude) {
 let minBoundary = 1;
 let maxBoundary = 100;
 
-const GameScreen = ({ userNumber }) => {
+const GameScreen = ({ userNumber, onSetGameOver }) => {
   const [currentGuess, setCurrentGuess] = useState(
     getRandomNumber(1, 100, userNumber)
   );
@@ -49,11 +49,9 @@ const GameScreen = ({ userNumber }) => {
 
   useEffect(() => {
     if (currentGuess === userNumber) {
-      Alert.alert("Congratulations!", "You guessed the number!", [
-        { text: "Start Over", style: "cancel" },
-      ]);
+      onSetGameOver(true);
     }
-  }, [currentGuess]);
+  }, [currentGuess, userNumber, onSetGameOver]);
   return (
     <View style={styles.screen}>
       <Title>Opponent's Guess</Title>
