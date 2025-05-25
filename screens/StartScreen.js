@@ -2,9 +2,9 @@ import { Alert, StyleSheet, TextInput, View } from "react-native";
 
 import { useState } from "react";
 import Title from "../components/UI/Buttons/Title";
-import Colors from "../constants/colors";
 import colors from "../constants/colors";
 import PrimaryButton from "../components/UI/Buttons/PrimaryButton";
+import Card from "../components/UI/Card";
 
 const StartScreen = ({ onPickNumber }) => {
   const [enteredNumber, setEnteredNumber] = useState("");
@@ -31,7 +31,7 @@ const StartScreen = ({ onPickNumber }) => {
   return (
     <>
       <Title>Guess My Number</Title>
-      <View style={styles.inputContainer}>
+      <Card style={[styles.inputContainer]}>
         <TextInput
           style={styles.numberInput}
           placeholder="00"
@@ -51,7 +51,7 @@ const StartScreen = ({ onPickNumber }) => {
             <PrimaryButton onPress={confirmHandler}>Confirm</PrimaryButton>
           </View>
         </View>
-      </View>
+      </Card>
     </>
   );
 };

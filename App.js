@@ -47,8 +47,7 @@ export default function App() {
       >
         <SafeAreaView
           style={{
-            ...styles.rootContainer,
-            padding: 24,
+            ...styles.innerContainer,
             paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0, // to avoid status bar
           }}
         >
@@ -64,6 +63,11 @@ export default function App() {
 const styles = StyleSheet.create({
   rootContainer: {
     flex: 1,
+  },
+  innerContainer: {
+    flex: 1,
+    marginTop: 100,
+    padding: 24,
   },
   backgroundImage: {
     opacity: 0.35,

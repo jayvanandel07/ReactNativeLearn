@@ -2,18 +2,19 @@ import { View, Text, StyleSheet } from "react-native";
 import React from "react";
 import PrimaryButton from "../components/UI/Buttons/PrimaryButton";
 import colors from "../constants/colors";
+import Card from "../components/UI/Card";
 
 const GameOverScreen = ({ onSetGameOver }) => {
   return (
     <View style={styles.screen}>
-      <View style={styles.gameOverContainer}>
-        <Text style={styles.gameOverText}>Game Over!</Text>
+      <Card style={styles.gameOverContainer}>
+        <Text style={styles.gameOverText}>Game Over !</Text>
         <View>
           <PrimaryButton onPress={() => onSetGameOver(false)}>
             Guess Again
           </PrimaryButton>
         </View>
-      </View>
+      </Card>
     </View>
   );
 };
@@ -23,16 +24,11 @@ export default GameOverScreen;
 const styles = StyleSheet.create({
   screen: {
     flex: 1,
-    justifyContent: "center",
     alignItems: "center",
   },
   gameOverContainer: {
-    backgroundColor: colors.primary500,
+    width: "100%",
     padding: 36,
-    width: "80%",
-    borderRadius: 10,
-    alignItems: "center",
-    gap: 16,
   },
   gameOverText: {
     color: colors.secondary500,

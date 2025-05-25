@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import NumberContainer from "../components/game/NumberContainer";
 import PrimaryButton from "../components/UI/Buttons/PrimaryButton";
 import colors from "../constants/colors";
+import Card from "../components/UI/Card";
 
 function getRandomNumber(min, max, exclude) {
   const randomNumber = Math.floor(Math.random() * (max - min)) + min;
@@ -57,8 +58,8 @@ const GameScreen = ({ userNumber, onSetGameOver }) => {
       <Title>Opponent's Guess</Title>
       <NumberContainer>{currentGuess}</NumberContainer>
 
-      <View style={styles.controlsContainer}>
-        <Text style={styles.controlTitle}>Higher or Lower?</Text>
+      <Card>
+        <Text style={styles.controlTitle}>Higher / Lower ?</Text>
         <View style={styles.buttonsContainer}>
           <View style={styles.buttonContainer}>
             <PrimaryButton onPress={nextGuessHandler.bind(this, "higher")}>
@@ -71,7 +72,7 @@ const GameScreen = ({ userNumber, onSetGameOver }) => {
             </PrimaryButton>
           </View>
         </View>
-      </View>
+      </Card>
     </View>
   );
 };
@@ -81,13 +82,6 @@ export default GameScreen;
 const styles = StyleSheet.create({
   screen: {
     flex: 1,
-  },
-  controlsContainer: {
-    alignItems: "center",
-    backgroundColor: colors.primary500,
-    padding: 16,
-    borderRadius: 10,
-    gap: 16,
   },
   controlTitle: {
     color: colors.secondary500,
